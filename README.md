@@ -1,12 +1,3 @@
----
-title: Youtube Transcription
-emoji: 🐨
-colorFrom: gray
-colorTo: purple
-sdk: streamlit
-sdk_version: 1.17.0
-app_file: app.py
-pinned: false
----
-
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+# Youtube Sentiment Analysis Web app
+The project takes the youtube video URL and extracts the audio, converts it to text using the Whisper Base model, and then performs sentiment analysis, currently only works in English, more to come soon.
+https://ashhadahsan-youtube-video-transcription-app-l0q5c2.streamlit.app/
