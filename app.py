@@ -9,7 +9,7 @@ import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+nltk.download('vader_lexicon')
 
 @st.cache_resource
 def load_model():
