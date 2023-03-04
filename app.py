@@ -5,12 +5,21 @@ import pytube
 from pytube import YouTube
 import os
 import whisper
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 @st.cache_resource
 def load_model():
     return whisper.load_model("base")
 
+# Create a function to analyze sentiment
+def analyze_sentiment(text):
+    analyzer = SentimentIntensityAnalyzer()
+    scores = analyzer.polarity_scores(text)
+    return scores
 
 st.set_page_config(layout="wide", page_title="Youtube Transcription",page_icon="▶️")
 st.title("Extract text from Youtube video")
@@ -37,4 +46,12 @@ if st.button("Extract"):
         result = model.transcribe(f"{out_file}")
 
         placeholder.text_area("Result",result["text"])
+        scores = analyze_sentiment(result['text'])
+        st.write("Sentiment scores:", scores)
+
+        # Create a bar chart of the sentiment scores
+        fig, ax = plt.subplots()
+        ax.bar(scores.keys(), scores.values())
+        st.pyplot(fig)
+        
         os.remove(out_file)
