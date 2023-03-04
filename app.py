@@ -12,7 +12,7 @@ def load_model():
     return whisper.load_model("base")
 
 
-st.set_page_config(layout="wide", page_title="Youtube Transcription")
+st.set_page_config(layout="wide", page_title="Youtube Transcription",page_icon="▶️")
 st.title("Extract text from Youtube video")
 st.caption("Currently only supports English (more to come soon)")
 url = st.text_input(
