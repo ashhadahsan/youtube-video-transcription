@@ -7,7 +7,7 @@ import os
 import whisper
 
 
-@st.cache(show_spinner=False)
+@st.cache_resource
 def load_model():
     return whisper.load_model("base")
 
@@ -36,5 +36,5 @@ if st.button("Extract"):
         model = load_model()
         result = model.transcribe(f"{out_file}")
 
-        placeholder.text_area(result["text"])
+        placeholder.text_area("Result",result["text"])
         os.remove(out_file)
