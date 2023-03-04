@@ -1,0 +1,4 @@
+pytube==12.1.2
+streamlit
+openai-whisper
+moviepy
